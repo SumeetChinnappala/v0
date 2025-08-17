@@ -9,7 +9,7 @@ REPORTS = Path("reports"); REPORTS.mkdir(parents=True, exist_ok=True)
 
 feat_path = PROC/"features_v0.csv"
 if not feat_path.exists():
-    raise FileNotFoundError(f"Missing {feat_path}. Run build_features.py first.")
+    raise FileNotFoundError(f"Missing {feat_path}. Run src\\build_features.py first.")
 
 df = pd.read_csv(feat_path)
 k = max(1, int(0.03*len(df)))

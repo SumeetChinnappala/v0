@@ -1,57 +1,16 @@
-﻿# Bytecode/venv
+﻿.venv/
 __pycache__/
-*.py[cod]
-*.pyo
-.venv/
-env/
-venv/
+*.pyc
 .ipynb_checkpoints/
-
-# IDE
-.vscode/*
-!.vscode/settings.json
-!.vscode/launch.js
-# --- 0) Go to your project root ---
-cd C:\Users\Owner\Documents\v0
-
-# --- 1) Create handy folders if missing ---
-mkdir data\raw,data\processed,models,notebooks,reports,src,scripts,ui,.vscode 2>$null
-
-# --- 2) Git init + identity (set once globally) ---
-git init
-git config --global user.name "Sumeet Chinnappala"
-git config --global user.email "you@example.com"
-
-# --- 3) .gitignore (Python + data hygiene) ---
-@'
-# Bytecode/venv
-__pycache__/
-*.py[cod]
-*.pyo
-.venv/
-env/
-venv/
-.ipynb_checkpoints/
-
-# IDE
 .vscode/*
 !.vscode/settings.json
 !.vscode/launch.json
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Data (keep small, version large elsewhere)
 data/raw/*
 data/processed/*
-models/*
+!data/processed/.gitkeep
 reports/*.png
 reports/*.pdf
-
-# Allow small example files if needed:
-!data/raw/README.md
-!data/processed/.gitkeep
-
-# Logs
-*.log
+reports/*.html
+reports/*.svg
+reports/*.xlsx
+!reports/.gitkeep

@@ -15,7 +15,7 @@ else:
     st.warning("Run the pipeline first to generate metrics.")
 
 if not rank_path.exists():
-    st.error("No ranked results found. Run build_features.py and train_and_rank.py, then refresh.")
+    st.error("No ranked results found. Run src\\build_features.py and src\\train_and_rank.py, then refresh.")
 else:
     df = pd.read_csv(rank_path)
     st.subheader("Top-ranked genes")

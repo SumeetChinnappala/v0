@@ -15,7 +15,7 @@ f_ge   = find_one([["crispr","gene","effect"]])
 f_expr = find_one([["tpm","log1"],["tpm","logp1"],["tpmlog1"]])
 f_meta = find_one([["model"],["mode"]])
 if not f_ge or not f_expr or not f_meta:
-    raise FileNotFoundError(f"Missing files: CRISPR={f_ge}, TPM={f_expr}, META={f_meta}")
+    raise FileNotFoundError(f"Missing files in data/raw. Found: CRISPR={f_ge}, TPM={f_expr}, META={f_meta}")
 
 ge   = pd.read_csv(f_ge)
 expr = pd.read_csv(f_expr)
@@ -37,8 +37,9 @@ expr_i = normalize_gene_df(expr)
 
 common_cells = sorted(set(ge_i.columns).intersection(expr_i.columns))
 if not common_cells:
-    raise RuntimeError("No overlapping cell lines between CRISPR and expression.")
+    raise RuntimeError("No overlapping cell lines between CRISPR and expression (check that releases match).")
 
+# metadata: robust pick for DepMap_ID + lineage
 meta_cols = {c.lower(): c for c in meta.columns}
 def pick(*opts):
     for o in opts:
@@ -62,6 +63,7 @@ nonl = [c for c in common_cells if c not in set(leuk)]
 
 ge_c, expr_c = ge_i[common_cells], expr_i[common_cells]
 
+# Features
 g_mean_ess = ge_c[leuk].mean(1) if leuk else ge_c.mean(1)
 g_prop_ess = (ge_c[leuk] < -0.5).mean(1) if leuk else (ge_c < -0.5).mean(1)
 lfc_expr   = (expr_c[leuk].mean(1) - (expr_c[nonl].mean(1) if nonl else expr_c[leuk].mean(1)))
