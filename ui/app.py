@@ -21,11 +21,6 @@ else:
     st.subheader("Top-ranked genes")
     top_k = st.slider("Top-K genes to view", min_value=10, max_value=200, value=50, step=10)
     st.dataframe(df.head(top_k), use_container_width=True)
-
-    st.subheader("Download")
-    st.download_button(
-        "Download Top-K CSV",
+    st.download_button("Download Top-K CSV",
         df.head(top_k).to_csv(index=False).encode("utf-8"),
-        "topk.csv",
-        "text/csv"
-    )
+        "topk.csv","text/csv")
