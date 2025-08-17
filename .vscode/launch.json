@@ -1,0 +1,27 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run v0 feature build",
+      "type": "python",
+      "request": "launch",
+      "program": "/src/build_features.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run v0 train/rank",
+      "type": "python",
+      "request": "launch",
+      "program": "/src/train_and_rank.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run UI (Streamlit)",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "ui/app.py"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

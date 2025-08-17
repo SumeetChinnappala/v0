@@ -1,0 +1,7 @@
+done 
+item; human input; code
+4 excel cancer data from --- titled ---; downloads, file organization; powershell
+
+
+to do
+launch v0
